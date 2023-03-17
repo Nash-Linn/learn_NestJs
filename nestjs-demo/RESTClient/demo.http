@@ -1,0 +1,21 @@
+# POST http://localhost:8080/girl/add 
+
+# Content-Type: application/json
+
+# {
+#   "id":2,
+#   "name":"小陈",
+#   "age":33
+# }
+
+
+# -------------------------------------------------------
+
+# Get http://localhost:8080/girl/getGirlById 
+# ?id=1
+
+
+# -------------------------------------------------------
+
+Get http://localhost:8080/girl/findGirlById/2
+

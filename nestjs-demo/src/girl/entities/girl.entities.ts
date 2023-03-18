@@ -8,7 +8,10 @@ import {
 
 @Entity()
 export class Girl {
-  @PrimaryGeneratedColumn('uuid')
+  @Generated('uuid') //生成 uuid
+  uuid: string;
+
+  @PrimaryGeneratedColumn('uuid') //自动生成id
   id: number;
 
   @Column({ type: 'varchar', length: 255 })
@@ -22,7 +25,4 @@ export class Girl {
 
   @CreateDateColumn({ type: 'timestamp' })
   entryTime: Date;
-
-  @Generated('uuid')
-  uuid: string;
 }

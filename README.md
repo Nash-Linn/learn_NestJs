@@ -53,3 +53,24 @@ nest g service girl --no-spec
 ## 安装 TypeORM
 
 npm install --save @nestjs/typeorm typeorm mysql2
+
+## 为 NestJS 增加热重载功能
+
+### 1.安装依赖
+
+npm i --save-dev webpack-node-externals run-script-webpack-plugin webpack
+
+npm i -D @types/webpack-env
+
+## 中间键 MiddleWare
+
+nest g mi counter
+
+## 解决跨域 可以使用 nest 自带配置 此处使用插件解决
+
+npm install cors
+npm install @types/cors -D
+
+## 新建模块
+
+nest g res moduleName

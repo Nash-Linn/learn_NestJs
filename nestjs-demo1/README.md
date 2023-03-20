@@ -71,3 +71,25 @@ nest g pi login
 ## 安装验证器
 
 npm i --save class-validator class-transformer
+
+## 爬虫
+
+npm install cheerio -S
+npm install axios
+
+## nest 守卫
+
+守卫在每个中间件之后执行，但在任何拦截器或管道之前执行
+nest g gu name
+
+## 自定义装饰器
+
+nest g d name
+
+## 接口文档
+
+npm install @nestjs/swagger swagger-ui-express
+
+## 连接数据库
+
+npm install --save @nestjs/typeorm typeorm mysql2

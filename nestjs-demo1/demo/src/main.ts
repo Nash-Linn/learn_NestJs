@@ -9,6 +9,9 @@ import { join } from 'path';
 import { ResponseInterceptor } from './common/responseInterceptor';
 import { AnomalyInterceptor } from './common/anomalyInterceptor';
 import { ValidationPipe } from '@nestjs/common'; //全局引入校验
+// import { RoleGuard } from './guard/role/role.guard';
+
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'; //接口文档
 
 const whiteList = ['/list'];
 
@@ -51,6 +54,18 @@ async function bootstrap() {
   app.useGlobalFilters(new AnomalyInterceptor());
 
   app.useGlobalPipes(new ValidationPipe()); //全局引入管道校验
+
+  // app.useGlobalGuards(new RoleGuard()); //全局守卫
+
+  const options = new DocumentBuilder()
+    .addBearerAuth()
+    .setTitle('api doc')
+    .setDescription('api description')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+
+  SwaggerModule.setup('/api-docs', app, document);
 
   await app.listen(3000);
 }

@@ -9,8 +9,9 @@ import { Like, Repository } from 'typeorm';
 @Injectable()
 export class UsersService {
   // constructor(
-  @InjectRepository(Users) private readonly users: Repository<Users>;
-  @InjectRepository(Tags) private readonly tags: Repository<Tags>;
+  @InjectRepository(Users, 'test_nest')
+  private readonly users: Repository<Users>;
+  @InjectRepository(Tags, 'test_nest') private readonly tags: Repository<Tags>;
   // ) {}
   create(createUserDto: CreateUserDto) {
     const data = new Users();
@@ -25,6 +26,7 @@ export class UsersService {
     const pageSize = query.pageSize ? query.pageSize : 10;
     const keyWord = query.keyWord ? query.keyWord : '';
     const data = await this.users.find({
+      relations: ['tags'],
       where: {
         name: Like(`%${keyWord}%`),
       },
@@ -58,17 +60,13 @@ export class UsersService {
   }
 
   async addTags(params: { tags: string[]; userId: number }) {
-    console.log('params', params);
     const userInfo = await this.users.findOne({ where: { id: params.userId } });
-    console.log('userInfo', userInfo);
     const taglist: Tags[] = [];
     for (const i in params.tags) {
       const T = new Tags();
-      T.name = params[i];
-      await this.tags.save(T);
+      T.name = params.tags[i];
       taglist.push(T);
     }
-    console.log('taglist', taglist);
     userInfo.tags = taglist;
     this.users.save(userInfo);
     return true;

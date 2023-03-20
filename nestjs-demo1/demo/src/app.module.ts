@@ -15,6 +15,8 @@ import { GuardModule } from './guard/guard.module';
 import { TestsqlModule } from './testsql/testsql.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { databaseConf } from './common/database';
+
 @Module({
   imports: [
     DemoModule,
@@ -30,19 +32,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     GuardModule,
     TestsqlModule,
     UsersModule,
-    // TypeOrmModule.forRoot({
-    //   type: 'mysql',
-    //   host: '101.34.111.220',
-    //   port: 3306,
-    //   username: 'nest_root',
-    //   password: 'root123',
-    //   database: 'test_nest',
-    //   retryDelay: 500, //重试时间间隔
-    //   retryAttempts: 10, //重试次数
-    //   synchronize: true, //自动将实体类同步到数据库
-    //   autoLoadEntities: true, //自动加载实体
-    //   // entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    // }),
+    ...databaseConf(),
   ],
   controllers: [AppController, DemoControllerController],
   providers: [AppService, DemoServiceService],

@@ -4,6 +4,7 @@ import { UpdateUploadDto } from './dto/update-upload.dto';
 
 @Injectable()
 export class UploadService {
+	
   create(createUploadDto: CreateUploadDto) {
     return 'This action adds a new upload';
   }
@@ -23,4 +24,6 @@ export class UploadService {
   remove(id: number) {
     return `This action removes a #${id} upload`;
   }
+  
+  
 }

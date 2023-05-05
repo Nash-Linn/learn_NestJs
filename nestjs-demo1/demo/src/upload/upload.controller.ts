@@ -39,7 +39,8 @@ export class UploadController {
 
   @Get('export')
   downLoad(@Res() res: Response) {
-    const url = join(this.fileDir, '/图片2(1679216886592).png');
+    const url = join(this.fileDir, '/test(1680081640661).jpg');
+	console.log(url,'url------')
     res.download(url);
     return {
       code: 200,
@@ -51,7 +52,7 @@ export class UploadController {
   //进行压缩
   @Get('zipstream')
   async downStreamzip(@Res() res: Response) {
-    const filename = '图片2(1679216886592).png';
+    const filename = 'test(1679991840758).jpg';
     const url = join(this.fileDir, `/${filename}`);
     const tarStram = new zip.Stream();
     await tarStram.addEntry(url);
@@ -69,7 +70,7 @@ export class UploadController {
   @Get('stream')
   // file.pipe(res);
   downStream(@Res({ passthrough: true }) res: Response): StreamableFile {
-    const filename = '图片2(1679216886592).png';
+    const filename = 'avatar(1681119016292).png';
     const url = join(this.fileDir, `/${filename}`);
     const file = createReadStream(url);
     res.setHeader('Content-Type', 'application/json');
@@ -78,6 +79,8 @@ export class UploadController {
       `attachment;filename = ${encodeURIComponent(filename)}`,
     );
     const steamFile = new StreamableFile(file);
+	
     return steamFile;
   }
+  
 }

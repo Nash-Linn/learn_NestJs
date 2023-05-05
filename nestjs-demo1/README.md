@@ -32,8 +32,8 @@ npm i svg-captcha --save
 
 ## 文件上传 的两个包
 
-multer @nestjs/platform-express （nestjs 自带）
-multer @types/multer
+npm install multer @nestjs/platform-express （nestjs 自带）
+npm install multer @types/multer
 
 ## 用流的形式导出文件
 

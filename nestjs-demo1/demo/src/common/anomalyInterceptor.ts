@@ -9,7 +9,7 @@ import {
 
 import { Request, Response } from 'express';
 
-@Catch()
+@Catch(HttpException)
 export class AnomalyInterceptor implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();

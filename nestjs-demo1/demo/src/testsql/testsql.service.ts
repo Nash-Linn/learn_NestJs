@@ -7,13 +7,13 @@ import { Testsql } from './entities/testsql.entity';
 @Injectable()
 export class TestsqlService {
   constructor(
-    @InjectRepository(Testsql) readonly Testsql: Repository<Testsql>,
+    // @InjectRepository(Testsql) readonly Testsql: Repository<Testsql>,
   ) {}
 
   create(createTestsqlDto: CreateTestsqlDto) {
     const data = new Testsql();
     data.name = '测试';
-    return this.Testsql.save(data);
+    // return this.Testsql.save(data);
   }
 
   findAll() {

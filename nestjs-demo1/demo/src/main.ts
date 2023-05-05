@@ -12,7 +12,6 @@ import { ValidationPipe } from '@nestjs/common'; //全局引入校验
 // import { RoleGuard } from './guard/role/role.guard';
 
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'; //接口文档
-
 const whiteList = ['/list'];
 
 function MiddleWareAll(req: Request, res: Response, next: NextFunction) {

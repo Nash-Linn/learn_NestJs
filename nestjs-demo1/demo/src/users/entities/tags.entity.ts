@@ -9,6 +9,9 @@ export class Tags {
   @Column()
   name: string;
 
+  @Column()
+  desc: string;
+
   @ManyToOne(() => Users)
   user: Users;
 }

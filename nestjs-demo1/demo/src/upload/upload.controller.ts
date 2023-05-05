@@ -40,7 +40,7 @@ export class UploadController {
   @Get('export')
   downLoad(@Res() res: Response) {
     const url = join(this.fileDir, '/test(1680081640661).jpg');
-	console.log(url,'url------')
+    console.log(url, 'url------');
     res.download(url);
     return {
       code: 200,
@@ -79,8 +79,7 @@ export class UploadController {
       `attachment;filename = ${encodeURIComponent(filename)}`,
     );
     const steamFile = new StreamableFile(file);
-	
+
     return steamFile;
   }
-  
 }

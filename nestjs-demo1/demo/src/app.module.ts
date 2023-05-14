@@ -16,6 +16,7 @@ import { TestsqlModule } from './testsql/testsql.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseConf } from './common/database';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { databaseConf } from './common/database';
     TestsqlModule,
     UsersModule,
     ...databaseConf(),
+    AuthModule,
   ],
   controllers: [AppController, DemoControllerController],
   providers: [AppService, DemoServiceService],

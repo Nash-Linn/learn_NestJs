@@ -12,7 +12,6 @@ const fileDir = join(__dirname, '../images');
       storage: diskStorage({
         destination: fileDir,
         filename: (req, file, callback) => {
-          console.log('file', file);
           const name = file.originalname.split('.')[0];
           const fileName = `${
             name + '(' + new Date().getTime() + ')' + extname(file.originalname)
